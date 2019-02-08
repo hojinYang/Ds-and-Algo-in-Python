@@ -15,7 +15,7 @@ class Tree:
         
         def __ne__(self, other):
             """Return ture if other does not represent the same location"""
-            return (self == other)
+            return not (self == other)
         
     #-----------abstract methods that concrete subclass must support---------#
     def root(self):
@@ -99,18 +99,4 @@ class BinaryTree(Tree):
         if self.left(p) is not None:
             yield self.left(p)
         if self.left(p) is not None:
-            yield self.right(p)
-
-            
-        
-
-        
-        
-
-
-
-
-     
-
-
-        
+            yield self.right(p)        
