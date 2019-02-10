@@ -3,7 +3,7 @@ from Tree import BinaryTree
 class LinkedBinaryTree(BinaryTree):
     """Concrete class representing a linked binary tree"""
     class _Node:
-        def __init__(self, element, left, right, parent):
+        def __init__(self, element, left  = None, right = None, parent = None):
             self._element = element
             self._left = left
             self._right = right
@@ -53,6 +53,27 @@ class LinkedBinaryTree(BinaryTree):
     def left(self, p):
         node = self._validate(p)
         return self._make_position(node._left)
+    
+    def right(self, p):
+        node = self._validate(p)
+        return self._make_position(node._right)
+    
+    def num_children(self, p):
+        count = 0
+        node = self._validate(p)
+        if node._left is not None:
+            count += 1
+        if node._right is not None:
+            count += 1
+        
+        return count
+    def _add_root(self, e):
+        if self._root is not None:
+            raise ValueError('root exists')
+        self._root = self._Node(e)
+        self._size += 1
+        return self._make_position(self._root)
+    
     
 
 
