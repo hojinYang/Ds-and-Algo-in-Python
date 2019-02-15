@@ -30,7 +30,7 @@ class Tree:
         """Return the number of children that Position P has"""
         raise NotImplementedError('must be implemented by subclass')
 
-    def childern(self, p):
+    def children(self, p):
         """Generate an iteratoin of Positions representing p's children"""
         raise NotImplementedError('must be implemented by subclass')
 
@@ -77,7 +77,7 @@ class Tree:
     
     def _subtree_preorder(self, p):
         yield p
-        for c in p.children():
+        for c in self.children(p):
             for other in self._subtree_preorder(c):
                 yield other
     
@@ -87,7 +87,7 @@ class Tree:
                 yield p
     
     def _subtree_postorder(self, p):
-        for c in p.children():
+        for c in self.children(p):
             for other in self._subtree_postorder(c):
                 yield other
         yield p
