@@ -70,6 +70,28 @@ class Tree:
         
         return self.height_1(p)
 
+    def preorder(self):
+        if not self.is_empty():
+            for p in self._subtree_preorder(self.root()):
+                yield p
+    
+    def _subtree_preorder(self, p):
+        yield p
+        for c in p.children():
+            for other in self._subtree_preorder(c):
+                yield other
+    
+    def postorder(self):
+        if not self.is_empty():
+            for p in self._subtree_postorder(self.root()):
+                yield p
+    
+    def _subtree_postorder(self, p):
+        for c in p.children():
+            for other in self._subtree_postorder(c):
+                yield other
+        yield p
+
 class BinaryTree(Tree):
     """Abstract base class representing a binary tree structure."""
 
