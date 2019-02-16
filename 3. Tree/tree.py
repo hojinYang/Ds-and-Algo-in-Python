@@ -61,7 +61,7 @@ class Tree:
         if self.is_leaf(p):
             return 0
         else:
-            return 1 + max(self.height_1(c) for c in self.childern(p))
+            return 1 + max(self.height_1(c) for c in self.children(p))
 
     def height(self, p=None):
         """Return the height of the subtree roorted at Position p."""
